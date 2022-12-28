@@ -1,0 +1,73 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+// C++ program to convert a decimal
+// number to hexadecimal number
+
+#include <iostream>
+using namespace std;
+
+// function to convert decimal to hexadecimal
+void decToHexa(int n)
+{
+	// char array to store hexadecimal number
+	char hexaDeciNum[100];
+
+	// counter for hexadecimal number array
+	int i = 0;
+	while (n != 0) {
+		// temporary variable to store remainder
+		int temp = 0;
+
+		// storing remainder in temp variable.
+		temp = n % 16;
+
+		// check if temp < 10
+		if (temp < 10) {
+			hexaDeciNum[i] = temp + 48;
+			i++;
+		}
+		else {
+			hexaDeciNum[i] = temp + 55;
+			i++;
+		}
+
+		n = n / 16;
+	}
+
+	// printing hexadecimal number array in reverse order
+	
+	for (int j = i - 1; j >= 0; j--)
+		cout << hexaDeciNum[j];
+}
+
+// Driver program to test above function
+
+
+
+int main()
+{
+    int salt = 30;
+    for(int i = 1; i<=54;i++)
+    
+{       // n  e  w  _  u  s  e  r  n  a  m  e
+    cout<<"6E 65 77 20 CC 3D 72 3e 6e"; 
+    cout<<salt<<" ";
+    salt++;
+    cout<<"CC 3D ";
+   
+    cout<<"72 3e ";
+        //  _  0  0  0  0  ;
+    cout<<"20 31 31 31 31 3B ";
+}
+
+    return 0;
+}

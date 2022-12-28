@@ -1,0 +1,102 @@
+add @r5, r4
+swpb r4
+xor @r5+, r6
+xor r4, r6
+xor r6, r4
+xor r4, r6
+_____________(everything from here on is useless?)
+tst 0x0(r5)
+mov sr, r7
+and #0x2, r7
+	
+// add @r5, r4
+// swpb r4
+// xor @r5+, r6
+// xor r4, r6
+// xor r6, r4
+// xor r4, r6
+
+#include <iostream>
+using namespace std;
+
+int swpb(int x)
+{
+    int left = x & 0xff00;
+    left = left >> 8;
+    int right = x & 0xff;
+    right = right << 8;
+    return left | right;
+}
+void progress(int r1)
+{
+    if (r1 == 0x1111)
+        cout << "1";
+    if (r1 == 0x2222)
+        cout << "2";
+    if (r1 == 0x3333)
+        cout << "3";
+    if (r1 == 0x4444)
+        cout << "4";
+    if (r1 == 0x5555)
+        cout << "5";
+    if (r1 == 0x6666)
+        cout << "6";
+    if (r1 == 0x7777)
+        cout << "7";
+    if (r1 == 0x8888)
+        cout << "8";
+    if (r1 == 0x9999)
+        cout << "9";
+    if (r1 == 0xaaaa)
+        cout << "a";
+    if (r1 == 0xbbbb)
+        cout << "b";
+    if (r1 == 0xcccc)
+        cout << "c";
+    if (r1 == 0xdddd)
+        cout << "d";
+    if (r1 == 0xeeee)
+        cout << "e";
+    if (r1 == 0xffff)
+        cout << "f";
+    return;
+}
+int main()
+{
+    int p[4];
+    int p1_s, p2_s, p3_s;
+    int r4, r6, r4_s;
+    int n = 3;
+    for (p[1] = 0x0000; p[1] <= 0xffff; p[1]++)
+    {
+        for (p[2] = 0x0000; p[2] <= 0xffff; p[2]++)
+        {
+            r4 = 0;
+            r6 = 0;
+            for (int i = 1; i < n; i++)
+            {
+                r4 += p[i];
+                r4 &= 0xffff;
+                r4 = swpb(r4);
+                r4 &= 0xffff;
+                r6 ^= p[i];
+                r6 &= 0xffff;
+                r6 ^= r4;
+                r6 &= 0xffff;
+                r4 ^= r6;
+                r4 &= 0xffff;
+                r6 ^= r4;
+                r6 &= 0xffff;
+            }
+            p[n] = 0xfeb1 ^ r6;
+            if (((p[n] + r4) & 0xffff) == 0x9892)
+            {
+                for (int i = 1; i <= n; i++)
+                    cout << hex << swpb(p[i]);
+                cout << "\n";
+            }
+        }
+        //progress(p[1]);
+    }
+    return 0;
+}

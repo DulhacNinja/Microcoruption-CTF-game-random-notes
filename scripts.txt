@@ -1,0 +1,7 @@
+#define track_all track r15;track r14;track r13;track r12;track r11;track r10;track r9;track r8;track r7;track r6;track r5;track r4
+#define untrack_all untrack r15;untrack r14;untrack r13;untrack r12;untrack r11;untrack r10;untrack r9;untrack r8;untrack r7;untrack r6;untrack r5;untrack r4
+#define breaks break r13+86;c;unbreak pc;break r13+a;c;unbreak pc;break r12;c;unbreak pc
+only one useful now :D
+#define start break 44d0;c;unbreak 44d0;break r12;c;unbreak pc
+#define mesaj start;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;breaks;
+uwu
